@@ -18,12 +18,27 @@ Vue.config.performance = true;
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-import App from './components/App.vue';
+// import App from './components/App.vue';
+import App from './components/Button.vue';
 
+// const app = new Vue({
+//   el: '#app',
+//   components: {
+//     App
+//   },
+//   // components:{
+//   //    'testcomponent': {
+//   //       template : '<p>This is coming from component</p>'
+//   //    }
+//   // },
+//   render: h => h(App)
+// });
 const app = new Vue({
-  el: '#app',
+  el: '#jumbotron',
+  //
   components: {
     App
   },
+  //
   render: h => h(App)
-});
+})

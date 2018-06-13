@@ -1,7 +1,7 @@
 <template>
     <div class="crud">
         <div class="col-1">
-            <img :src="image"/>
+            <img :src="image" :alt="alt" />
         </div>
         <div class="col-2">
             <h3>Name: {{ name | properCase }}</h3>
@@ -14,7 +14,7 @@
                 >{{ col | properCase }}</option>
 
             </select>
-            <button @click="del">Delete</button>
+            <button class="btn btn-success" @click="del">Delete</button>
         </div>
     </div>
 </template>
@@ -23,8 +23,12 @@
     computed: {
       image() {
         return `/images/${this.color}.png`;
+      },
+      alt() {
+        return `Head part for crud display`;
       }
     },
+
     methods: {
       update(val) {
         this.$emit('update', this.id, val.target.selectedOptions[0].value);
@@ -33,6 +37,7 @@
         this.$emit('delete', this.id);
       }
     },
+
     props: ['id', 'color', 'name'],
     filters: {
       properCase(string) {
@@ -43,7 +48,7 @@
 </script>
 <style>
     .crud {
-        display: flex;
+        display: flex; !important
         margin: 1em 1em 1em 0;
         border: 1px solid #d1d1d1;
         padding: 1em;

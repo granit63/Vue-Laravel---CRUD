@@ -5,6 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+
     <title>Cruds</title>
     <style>
         html, body {
@@ -27,8 +32,20 @@
     </style>
 </head>
 <body>
-<div id="mute"></div>
-<div id="app"></div>
+<!-- <div class="jumbotron jumbotron-fluid">
+  <div class="container" id="jumbotron">
+    <div id="mute"></div>
+    <div id="app"></div>
+  </div>
+</div> -->
+<div class="jumbotron jumbotron-fluid">
+  <div class="container" id="jumbotron">
+  </div>
+</div>
+
+<!-- <script src="jquery.inline-styler.js"></script> -->
 <script src="js/app.js"></script>
+<script>
+</script>
 </body>
 </html>

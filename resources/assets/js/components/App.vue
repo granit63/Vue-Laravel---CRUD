@@ -1,7 +1,7 @@
 <template>
     <div id="app">
         <div class="heading">
-            <h1>Cruds</h1>
+            <h1>Crud</h1>
         </div>
         <crud-component
                 v-for="crud in cruds"
