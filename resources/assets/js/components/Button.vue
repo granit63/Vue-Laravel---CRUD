@@ -20,7 +20,8 @@
 <script>
 
   import ButtonComponent from './ButtonClone.vue';
-  import jsPDF from 'jspdf';
+  import html2canvas from 'html2canvas';
+  import html2pdf from 'mjfhtml2pdf';
   // import hmtlToPdf from 'html-to-pdf';
 
   export default {
@@ -36,74 +37,46 @@
         this.languageclicked = a;
       },
       generatePDF() {
-        let doc = new jsPDF();
-        let pdfName = "test.pdf";
-        let elementHandler = {
-          '#ignore': function (element, render) {
-            return true;
-          }
-        };
-
-        // let parent = $('.text-primary').clone();
-        let parent = $('#content')[0];
-        // let parent1 = document.getElementById('small-text');
-        let parent1 = $('#small-text');
-        // console.log(parent1);
-        let finalhtml = "";
-        finalhtml = convertExternalInternalStylesToInline(parent1);
-        console.log(finalhtml);
-
-        function convertExternalInternalStylesToInline(parent) {
-          // var parent = $(parent).clone(); // clone it before modify, is this deep clone?
-          // console.log(parent);
-          // $parent.find(":contains()").each(function(idx,el){ // fetch all children
-             // var elContent = $(parent)[0]; // convert to jquery object
-             var ddd = parent[0];
-             let tmp = dumpComputedStyles(ddd, null);
-             for(let key in tmp){
-               parent.css( key, tmp[key]);
-             }
-          // });
-          // return as string, maybe:
-          return parent[0];
-        }
-
-        function dumpComputedStyles(elem, prop) {
-
-          var cs =  window.getComputedStyle(elem, null);
-          // console.log(cs);
-
-          if(prop) {
-            console.log(prop+" : "+cs.getPropertyValue(prop));
-            return;
-          }
-
-          var len = cs.length;
-          var final = [];
-          for(var i=0;i<len;i++){
-            var style = cs[i];
-            final[style] = cs.getPropertyValue(style);
-            // console.log(style+" : "+cs.getPropertyValue(style));
-          }
-          return final;
-        };
-        // console.log(classes);
-
-        // window.axios.get(`/api/htmltopdf`, {}).then((ddd) => {
-        //   console.log('convert to pdf file successful.');
-        // });
+        let source = $('#content')[0];
+        
+        html2pdf(source, {
+          margin:       1,
+          filename:     'myfile.pdf',
+          image:        { type: 'jpeg', quality: 0.98 },
+          html2canvas:  { dpi: 192, letterRendering: true },
+          jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+        });
+        // var img = {
+        //     image_pro: null
+        // };
+        // html2canvas(source).then(function(canvas) { cp(canvas); });
+        // var cp = function(canvas) {
+        //     // var image_cv = Canvas2Image.convertToPNG(canvas); //to generate an image from canvas
+        //     // img.image_pro = image_cv.getAttribute('src');
+        //     var myImage = canvas.toDataURL();
+        //     downloadURI(myImage, "cartao-virtual.png");
+        // };
         //
-        console.log(parent);
-        doc.fromHTML(
-          parent,
-          15,
-          15,
-          {
-            'width': '180',
-            'elementHandlers': elementHandler
-          }
-        );
-        doc.save(pdfName);
+        // function downloadURI(uri, name) {
+        //     var link = document.createElement("a");
+        //
+        //     link.download = name;
+        //     link.href = uri;
+        //     document.body.appendChild(link);
+        //     link.click();
+        //     clearDynamicLink(link);
+        // }
+        // html2canvas(source, {
+        //     onrendered: function(canvas) {
+        //         theCanvas = canvas;
+        //         document.body.appendChild(canvas);
+        //
+        //         // Convert and download as image
+        //         Canvas2Image.saveAsPNG(canvas);
+        //     }
+        // });
+
+
       }
     },
 

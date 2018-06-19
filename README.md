@@ -2,7 +2,6 @@
 
 Vue 2.5 + Laravel 5.5 + Axios CRUD example app
 
-> Inspiration from [https://github.com/herusdianto/laravel-vue-crud](https://github.com/herusdianto/laravel-vue-crud)
 
 <img src="demo.gif" width="416">
 
@@ -59,7 +58,7 @@ npm run prod
 ````
 php artisan tinker
 ````
-    
+
 2. Use factory script
 ````
 factory(App\Crud::class, 3)->create();

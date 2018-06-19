@@ -19,6 +19,8 @@
         "vue": "^2.5.7"
     },
     "dependencies": {
-        "jspdf": "^1.4.1"
+        "es6-promise": "^4.2.4",
+        "html2canvas": "^1.0.0-alpha.12",
+        "mjfhtml2pdf": "0.0.1"
     }
 }

@@ -36,7 +36,11 @@ if (token) {
 } else {
     console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
 }
+/**
+ *promise will be used to convert html part to image in only client-side via npm package-html2canvas;
+ */
 
+window.Promise = require('es6-promise').Promise;
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting
